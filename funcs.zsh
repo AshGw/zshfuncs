@@ -1,3 +1,7 @@
+
+# ================================================================
+#    ZSH FUNCTION COLLECTION
+# ================================================================
 precmd() {
     # Print the previously configured title
     print -Pnr -- "$TERM_TITLE"
