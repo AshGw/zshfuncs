@@ -1,7 +1,7 @@
 # zshfuncs
 This repo holds a bunch of `zsh` functions that I use.
 ## Installation
-For the most stable commit
+Simply run
 ```shell
 bash <(curl -L ashgw.me/api/v1/zshfuncs)
 ```
