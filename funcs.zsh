@@ -147,17 +147,14 @@ connected-devices(){
 
 # hex only
 genpass_easy() {
-    echo "Easy Password:"
     openssl rand -hex 16
 }
 
 # smoking mid
 genpass_mid() {
-    echo "Medium Password:"
     openssl rand -base64 24 | tr -dc 'A-Za-z0-9' | head -c 32
 }
 
 genpass_hard() {
-    echo "Hard Password:"
     openssl rand -base64 48 | tr -dc 'A-Za-z0-9!@#$%^&*()_+[]{}<>?,.:;' | head -c 32
 }
