@@ -125,3 +125,19 @@ weather() {
     fi
     printf "%s\n" "$SEP2"
 }
+
+
+#### Get the total number of connected devices, needs `arp-scan`
+
+connected-devices(){
+  GATEWAY_IP=$(ip route | grep default | awk '{print $3}')
+  echo "Scanning for connected devices on your network..."
+  sudo arp-scan --localnet | grep -v "Interface:" | grep -v "Starting arp-scan" | grep -v "Ending arp-scan"
+  CONNECTED_DEVICES=$(sudo arp-scan --localnet | grep -c "^\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}")
+  echo "Total number of connected devices: $CONNECTED_DEVICES"
+  GATEWAY_IP=$(ip route | grep default | awk '{print $3}')
+  echo "Scanning for connected devices on your network..."
+  sudo arp-scan --localnet | grep -v "Interface:" | grep -v "Starting arp-scan" | grep -v "Ending arp-scan"
+  CONNECTED_DEVICES=$(sudo arp-scan --localnet | grep -c "^\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}")
+  echo "Total number of connected devices: $CONNECTED_DEVICES"
+}
