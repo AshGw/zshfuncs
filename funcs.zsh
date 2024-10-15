@@ -141,3 +141,23 @@ connected-devices(){
   CONNECTED_DEVICES=$(sudo arp-scan --localnet | grep -c "^\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}")
   echo "Total number of connected devices: $CONNECTED_DEVICES"
 }
+
+
+#### Sometimes I really do need to gen a pass on the spot (all 32 chars)
+
+# hex only
+genpass_easy() {
+    echo "Easy Password:"
+    openssl rand -hex 16
+}
+
+# smoking mid
+genpass_mid() {
+    echo "Medium Password:"
+    openssl rand -base64 24 | tr -dc 'A-Za-z0-9' | head -c 32
+}
+
+genpass_hard() {
+    echo "Hard Password:"
+    openssl rand -base64 48 | tr -dc 'A-Za-z0-9!@#$%^&*()_+[]{}<>?,.:;' | head -c 32
+}
