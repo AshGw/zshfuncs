@@ -158,3 +158,11 @@ genpass_mid() {
 genpass_hard() {
     openssl rand -base64 48 | tr -dc 'A-Za-z0-9!@#$%^&*()_+[]{}<>?,.:;' | head -c 32
 }
+
+
+
+## g for git, double l is for last, since I already have gl as git log.. in the .gitconfig file.
+# anyways, this basically shows the diff of the last commit
+gll() {
+	 git show $(git log -1 --format=%H)
+}
