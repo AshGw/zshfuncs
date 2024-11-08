@@ -166,3 +166,8 @@ genpass_hard() {
 gll() {
 	 git show $(git log -1 --format=%H)
 }
+
+# s for status, like the git diff --stat
+gllc(){
+  git diff HEAD~1 HEAD --stat
+}
