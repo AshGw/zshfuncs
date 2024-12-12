@@ -171,3 +171,8 @@ gll() {
 gllc(){
   git diff HEAD~1 HEAD --stat
 }
+
+# Kill all TMUX sessions
+txkill(){
+  tmux list-sessions -F '#S' | xargs -I {} tmux kill-session -t {}
+}
