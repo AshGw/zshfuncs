@@ -176,3 +176,11 @@ gllc(){
 txkill(){
   tmux list-sessions -F '#S' | xargs -I {} tmux kill-session -t {}
 }
+
+# auto syncs my current gnome keybindings
+synckeys() {
+  local backup_dir="$HOME/personal/projects/dotfiles/other"
+  mkdir -p "$backup_dir"
+  dconf dump /org/gnome/settings-daemon/plugins/media-keys/ > "$backup_dir/keybindings.dconf"
+  cd "$HOME/personal/projects/dotfiles" && git add "$backup_dir/keybindings.dconf" && git commit -m "update GNOME keybindings" && git push
+}
